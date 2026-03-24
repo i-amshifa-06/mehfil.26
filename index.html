@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehfil 2026 - Cultural Fest</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tom Select CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+
+    <!-- Tom Select JS -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div id="loader">
+        <div class="spinner"></div>
+        <h2>Loading Mehfil 2026...</h2>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Mehfil 2026</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#register">Register</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Experience the Magic of <span>Culture</span></h1>
+                <p class="fade-in">Join us for an unforgettable journey through art, creativity, and innovation</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>20+</h3>
+                        <p>Amazing Events</p>
+                    </div>
+                   
+                    <div class="stat">
+                      <h3>Unleash the Vibe!</h3> 
+                    </div>
+                    
+                </div>
+                <a href="#register" class="btn-primary slide-up">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="fade-in">Our Events</h2>
+                <p class="fade-in">Where talent meets the stage</p>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-container fade-in">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="artistic">🎨 Artistic</button>
+                <button class="filter-btn" data-filter="technical">🔢 Technical</button>
+                <button class="filter-btn" data-filter="performance">🎭 Performance</button>
+                <button class="filter-btn" data-filter="fun">🤪 Fun</button>
+                <button class="filter-btn" data-filter="cultural">🇮🇳 Cultural</button>
+            </div>
+            
+            <div class="events-grid">
+                <!-- Painting -->
+                <div class="event-card fade-in" data-category="artistic" onclick="openEventModal('painting')">
+                    <div class="event-image">
+                        <div class="event-icon">🎨</div>
+                    </div>
+                    <div class="event-content">
+                        
+                        <h3>Painting</h3>
+                        <div class="event-overlay">
+                            <p>Unleash your creativity and express ideas through colors. Participants will create artwork based on a given theme within the time limit.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                        
+                    </div>
+                    <div class="event-tag">🎨 Artistic</div>
+                </div>
+
+                <!-- Form from Waste -->
+                <div class="event-card fade-in" data-category="artistic" onclick="openEventModal('form-from-waste')">
+                    <div class="event-image">
+                        <div class="event-icon">♻️</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Best Out of Waste</h3>
+                        <div class="event-overlay">
+                            <p>Turn trash into treasure! Showcase your innovation by creating useful or decorative items from waste materials.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">♻️ Eco-Friendly</div>
+                </div>
+
+                <!-- Kutty Story -->
+                <div class="event-card fade-in" data-category="performance" onclick="openEventModal('kutty-story')">
+                    <div class="event-image">
+                        <div class="event-icon">📖</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Kutty Skit</h3>
+                        <div class="event-overlay">
+                            <p>A short and impactful skit performance that delivers a message creatively.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">📖 Storytelling</div>
+                </div>
+
+                <!-- Illogical Marketing -->
+                <div class="event-card fade-in" data-category="fun" onclick="openEventModal('illogical-marketing')">
+                    <div class="event-image">
+                        <div class="event-icon">🤯</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Illogical Reasoning</h3>
+                        <div class="event-overlay">
+                            <p>Think out of the box! Give funny, creative, and illogical answers to questions.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">🤯 Comedy</div>
+                </div>
+
+                <!-- Photography -->
+                <div class="event-card fade-in" data-category="artistic" onclick="openEventModal('photography')">
+                    <div class="event-image">
+                        <div class="event-icon">📸</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Photography</h3>
+                        <div class="event-overlay">
+                            <p>Capture the world through your lens based on a given theme.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">📸 Visual Arts</div>
+                </div>
+
+                <!-- Shipwreck -->
+                <div class="event-card fade-in" data-category="performance" onclick="openEventModal('shipwreck')">
+                    <div class="event-image">
+                        <div class="event-icon">🚢</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Shipwreck</h3>
+                        <div class="event-overlay">
+                            <p>A survival game where participants defend their character and convince why they should survive.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">🚢 Drama</div>
+                </div>
+
+                <!-- Sudoku -->
+                <div class="event-card fade-in" data-category="technical" onclick="openEventModal('sudoku')">
+                    <div class="event-image">
+                        <div class="event-icon">🔢</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Sudoku</h3>
+                        <div class="event-overlay">
+                            <p>Test your logical thinking by solving Sudoku puzzles.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">🔢 Logic</div>
+                </div>
+
+                <!-- Rubik's Cube -->
+                <div class="event-card fade-in" data-category="technical" onclick="openEventModal('rubiks-cube')">
+                    <div class="event-image">
+                        <div class="event-icon">🧊</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Rubik's Cube</h3>
+                        <div class="event-overlay">
+                            <p>Speed and skill challenge to solve the Rubik's Cube.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">🧊 Speed</div>
+                </div>
+
+                <!-- Mono Acting / Drama -->
+                <div class="event-card fade-in" data-category="performance" onclick="openEventModal('mono-acting')">
+                    <div class="event-image">
+                        <div class="event-icon">🎭</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Mono Acting / Drama</h3>
+                        <div class="event-overlay">
+                            <p>Perform a powerful solo act showcasing emotions and storytelling.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">🎭 Acting</div>
+                </div>
+
+                <!-- Mime -->
+                <div class="event-card fade-in" data-category="performance" onclick="openEventModal('mime')">
+                    <div class="event-image">
+                        <div class="event-icon">🤐</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Mime</h3>
+                        <div class="event-overlay">
+                            <p>Tell a story without words using only expressions and movements.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">🤐 Silent</div>
+                </div>
+
+                <!-- Solo Dance -->
+                <div class="event-card fade-in" data-category="performance" onclick="openEventModal('solo-dance')">
+                    <div class="event-image">
+                        <div class="event-icon">💃</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Solo Dance</h3>
+                        <div class="event-overlay">
+                            <p>Express yourself through dance and rhythm.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">💃 Dance</div>
+                </div>
+
+                <!-- Solo Singing -->
+                <div class="event-card fade-in" data-category="performance" onclick="openEventModal('solo-singing')">
+                    <div class="event-image">
+                        <div class="event-icon">🎤</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Solo Singing</h3>
+                        <div class="event-overlay">
+                            <p>Showcase your vocal talent with a song of your choice.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">🎤 Music</div>
+                </div>
+
+                <!-- Group Dance -->
+                <div class="event-card fade-in" data-category="performance" onclick="openEventModal('group-dance')">
+                    <div class="event-image">
+                        <div class="event-icon">👯</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Group Dance</h3>
+                        <div class="event-overlay">
+                            <p>Perform synchronized dance with your team.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">👯 Team</div>
+                </div>
+
+                <!-- Corporate Walk -->
+                <div class="event-card fade-in" data-category="cultural" onclick="openEventModal('corporate-walk')">
+                    <div class="event-image">
+                        <div class="event-icon">🕴️</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Corporate Walk</h3>
+                        <div class="event-overlay">
+                            <p>Walk the ramp with confidence and professionalism. Show your corporate personality and communication skills.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">🕴️ Professional</div>
+                </div>
+
+                <!-- Heritage of India -->
+                <div class="event-card fade-in" data-category="cultural" onclick="openEventModal('heritage-of-india')">
+                    <div class="event-image">
+                        <div class="event-icon">👑</div>
+                    </div>
+                    <div class="event-content">
+                        <h3>Heritage of India</h3>
+                        <div class="event-overlay">
+                            <p>Present India's culture, traditions, and diversity through performance.</p>
+                            <button class="btn-primary">Register</button>
+                        </div>
+                    </div>
+                    <div class="event-tag">👑 Traditional</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div id="event-modal" class="event-modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeEventModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <div class="modal-icon" id="modal-icon">🎨</div>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title">Event Title</h2>
+                    <p id="modal-description">Event description goes here.</p>
+                    <div class="modal-actions">
+                        <a href="#register" class="btn-primary">Register Now</a>
+                        <button class="btn-secondary" onclick="closeEventModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="fade-in">Event Schedule</h2>
+                <p class="fade-in">Plan your day with our exciting lineup</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Painting</h3>
+                        <p><i class="far fa-clock"></i> 10:00 AM - 12:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Art Studio</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Form from Waste</h3>
+                        <p><i class="far fa-clock"></i> 12:30 PM - 1:30 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Art Studio</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Photography</h3>
+                        <p><i class="far fa-clock"></i> 2:00 PM - 4:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Photography Studio</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Sudoku & Rubik's Cube</h3>
+                        <p><i class="far fa-clock"></i> 4:30 PM - 6:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Computer Lab</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Performance Events</h3>
+                        <p><i class="far fa-clock"></i> 6:30 PM - 8:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Main Auditorium</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Awards & Closing Ceremony</h3>
+                        <p><i class="far fa-clock"></i> 8:30 PM - 9:00 PM</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Main Auditorium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+<section id="register" class="registration">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="fade-in">Event Registration</h2>
+            <p class="fade-in">Join the cultural revolution</p>
+        </div>
+        
+        <div class="registration-form">
+            <form id="registration-form">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+    <label for="event">Select Events</label>
+
+    <select id="event" name="event" multiple>
+        <option value="Painting">🎨 Painting</option>
+        <option value="Form from Waste">♻️ Form from Waste</option>
+        <option value="Kutty Story">📖 Kutty Story</option>
+        <option value="Illogical Marketing">🤯 Illogical Marketing</option>
+        <option value="Photography">📸 Photography</option>
+        <option value="Shipwreck">🚢 Shipwreck</option>
+        <option value="Sudoku">🔢 Sudoku</option>
+        <option value="Rubik's Cube">🧊 Rubik's Cube</option>
+        <option value="Mono Acting">🎭 Mono Acting</option>
+        <option value="Mime">🤐 Mime</option>
+        <option value="Solo Dance">💃 Solo Dance</option>
+        <option value="Solo Singing">🎤 Solo Singing</option>
+        <option value="Group Dance">👯 Group Dance</option>
+        <option value="Corporate Walk">🕴️ Corporate Walk</option>
+        <option value="Heritage of India">👑 Heritage of India</option>
+    </select>
+</div>
+                
+                <button type="submit" class="btn-primary">Register Now</button>
+            </form>
+            
+            <div id="success-message" class="success-message" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                Registration successful! We'll contact you soon.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="fade-in">Get In Touch</h2>
+                <p class="fade-in">We'd love to hear from you</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-university"></i>
+                        <div>
+                            <h4>College</h4>
+                            <p>Prestige Institute of Technology</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mehfil2026@college.edu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Mehfil. Made with ❤️ for Cultural Fest</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

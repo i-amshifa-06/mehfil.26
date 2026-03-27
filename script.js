@@ -706,7 +706,7 @@ if(sessionStorage.getItem("adShown")){
 
 const eventTimes = {
     "Painting": "10AM",
-    "Kutty Story": "10AM",
+    "Blind Hunt": "10AM",
     "Photography": "11AM",
     "Illogical Marketing": "11AM",
     "Shipwreck": "12PM",

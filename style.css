@@ -470,7 +470,8 @@ section {
 }
 
 .event-card-back {
-    background: linear-gradient(135deg, rgba(0, 80, 157, 0.95), rgba(0, 63, 136, 0.95));
+    /* background: linear-gradient(135deg, rgba(0, 80, 157, 0.95), rgba(0, 63, 136, 0.95)); */
+    background: linear-gradient(135deg, rgba(0, 80, 157, 0.3), rgba(0, 63, 136, 0.3));
     color: white;
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);

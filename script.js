@@ -293,6 +293,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Event card flip toggle (click-based, cross-browser)
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.event-card')) {
+            const card = e.target.closest('.event-card');
+            card.classList.toggle('flipped');
+        }
+    });
+
+
     // Intersection Observer for fade-in animations
     const observerOptions = {
         threshold: 0.1,

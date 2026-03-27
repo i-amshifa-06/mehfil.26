@@ -7,17 +7,15 @@ const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
 const registrationForm = document.getElementById('registration-form');
 const successMessage = document.getElementById('success-message');
-
-// 🔥 Event perf optimizations
-const eventsGrid = document.querySelector('.events-grid');
-const eventCards = document.querySelectorAll('.event-card');
-
-// Dynamic will-change management
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
+const eventModal = document.getElementById('event-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalTitleDetails = document.getElementById('modal-title-details');
+const modalDescription = document.getElementById('modal-description');
+const modalIcon = document.getElementById('modal-icon');
+const modalRules = document.getElementById('modal-rules'); 
+const modalImageSection = document.querySelector('.modal-image-section');
+const modalDetailsSection = document.getElementById('modal-details-section');
+const closeBtn = document.querySelector('.close-btn');
 
 // Countdown Timer Elements
 const daysElement = document.getElementById('days');
@@ -314,15 +312,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // 🔥 OPTIMIZED Observer (single query)
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(el => {
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
-
 
     // Mobile menu toggle
     hamburger.addEventListener('click', () => {
@@ -339,46 +335,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    // 🔥 OPTIMIZED Filter buttons (Firefox 60fps)
+    // Filter buttons functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const eventsGrid = document.querySelector('.events-grid');
-    let filterTimeout = null;
+    const eventCards = document.querySelectorAll('.event-card');
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // RAF throttle (16ms = 60fps)
-            if (filterTimeout) cancelAnimationFrame(filterTimeout);
-            filterTimeout = requestAnimationFrame(() => {
-                // Active state
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
 
-                const filterValue = button.getAttribute('data-filter');
-                const eventCards = eventsGrid.querySelectorAll('.event-card');
+            const filterValue = button.getAttribute('data-filter');
 
-                eventCards.forEach((card, index) => {
-                    const matches = filterValue === 'all' || card.getAttribute('data-category') === filterValue;
-                    
-                    if (matches) {
-                        card.style.transform = 'translateX(0) scale(1)';
-                        card.style.opacity = '1';
-                        card.style.visibility = 'visible';
-                        card.style.position = 'static';
-                        card.style.animationDelay = `${index * 0.05}s`;
-                    } else {
-                        card.style.transform = 'translateX(100%)';
-                        card.style.opacity = '0';
-                        card.style.visibility = 'hidden';
-                        card.style.position = 'absolute';
-                        card.style.width = card.offsetWidth + 'px';
-                    }
-                });
-                
-                filterTimeout = null;
+            // Filter cards
+            eventCards.forEach(card => {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.style.display = 'flex';
+                    card.style.animationDelay = '0s'; // Reset animation delay
+                } else {
+                    card.style.display = 'none';
+                }
             });
         });
     });
-
 
     // Registration form handling
     registrationForm.addEventListener('submit', (e) => {
@@ -505,8 +485,7 @@ document.getElementById("registration-form").addEventListener("submit", function
 
     formData.set("event", selected.join(", "));
 
-    // fetch("https://script.google.com/macros/s/AKfycbwLAREDeHhc99UVZEscZNwaRt0LAcfpK59edp9ciaknByt2ykF1hMm-QEBphkBGjAohbg/exec", {
-    fetch("https://script.google.com/macros/s/AKfycbyXCiEUl_soBviriSpGKlDtrYtBesotcPoeHUlFlWFQrPMeYFyUnw_fL4zPHv9CztQq/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbwLAREDeHhc99UVZEscZNwaRt0LAcfpK59edp9ciaknByt2ykF1hMm-QEBphkBGjAohbg/exec", {
         method: "POST",
         body: formData
     })

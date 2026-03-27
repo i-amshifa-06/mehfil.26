@@ -293,15 +293,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Event card flip toggle (click-based, cross-browser)
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.event-card')) {
-            const card = e.target.closest('.event-card');
-            card.classList.toggle('flipped');
-        }
-    });
-
-
     // Intersection Observer for fade-in animations
     const observerOptions = {
         threshold: 0.1,
@@ -344,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    // Filter buttons functionality
+// Filter buttons functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     const eventCards = document.querySelectorAll('.event-card');
 
@@ -360,13 +351,55 @@ document.addEventListener('DOMContentLoaded', function() {
             // Filter cards
             eventCards.forEach(card => {
                 if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                    card.style.display = 'flex';
+                    card.style.display = 'block';
                     card.style.animationDelay = '0s'; // Reset animation delay
+                    // Close any open cards when filtering
+                    card.querySelector('.event-card-inner')?.classList.remove('flipped');
                 } else {
                     card.style.display = 'none';
                 }
             });
         });
+    });
+
+    // 🔥 NEW: Event Card Flip Toggle (Click-based, cross-browser)
+    document.addEventListener('click', function(e) {
+        const card = e.target.closest('.event-card');
+        if (!card) {
+            // Close all cards if clicking outside
+            document.querySelectorAll('.event-card-inner.flipped').forEach(inner => {
+                inner.classList.remove('flipped');
+            });
+            return;
+        }
+
+        const inner = card.querySelector('.event-card-inner');
+        if (!inner) return;
+
+        // Toggle this card (close others first)
+        document.querySelectorAll('.event-card-inner.flipped').forEach(otherInner => {
+            if (otherInner !== inner) {
+                otherInner.classList.remove('flipped');
+            }
+        });
+
+        // Toggle current card
+        inner.classList.toggle('flipped');
+
+        // Prevent text selection and double-tap zoom
+        e.preventDefault();
+    }, { passive: false });
+
+    // Keyboard accessibility
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            const card = e.target.closest('.event-card');
+            if (card) {
+                e.preventDefault();
+                const inner = card.querySelector('.event-card-inner');
+                inner?.classList.toggle('flipped');
+            }
+        }
     });
 
     // Registration form handling
@@ -494,7 +527,8 @@ document.getElementById("registration-form").addEventListener("submit", function
 
     formData.set("event", selected.join(", "));
 
-    fetch("https://script.google.com/macros/s/AKfycbwLAREDeHhc99UVZEscZNwaRt0LAcfpK59edp9ciaknByt2ykF1hMm-QEBphkBGjAohbg/exec", {
+    // fetch("https://script.google.com/macros/s/AKfycbwLAREDeHhc99UVZEscZNwaRt0LAcfpK59edp9ciaknByt2ykF1hMm-QEBphkBGjAohbg/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbyXCiEUl_soBviriSpGKlDtrYtBesotcPoeHUlFlWFQrPMeYFyUnw_fL4zPHv9CztQq/exec", {
         method: "POST",
         body: formData
     })

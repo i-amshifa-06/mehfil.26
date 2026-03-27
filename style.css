@@ -425,7 +425,9 @@ section {
 /* Flip Card Styles */
 .event-card {
     perspective: 1000px;
+    isolation: isolate; /* Firefox stacking fix */
 }
+
 
 .event-card-inner {
     position: relative;
@@ -434,7 +436,10 @@ section {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    will-change: transform;
+    contain: layout style paint;
 }
+
 
 .event-card:hover .event-card-inner {
     transform: rotateY(180deg);
@@ -449,7 +454,7 @@ section {
 }
 
 .event-card-front {
-    background: white;
+    background: #ffffff;
 }
 
 .event-card-back {
